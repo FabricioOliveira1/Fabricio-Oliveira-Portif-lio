@@ -314,7 +314,9 @@ nav#navigation.on-scroll .open-menu {
     align-items: center;
     gap: 2rem;
 
-    text-align: left;
+    padding-inline: 2rem;
+
+    text-align: center;
 
     z-index: 150;
 }
@@ -323,6 +325,9 @@ nav#navigation.on-scroll .open-menu {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
+    align-items: center;
+
 }
 
 #home h1 {
@@ -829,6 +834,12 @@ nav#navigation.on-scroll .open-menu {
 #home .wrapper {
     flex-direction: row;
     justify-content: space-evenly;
+
+    text-align: left;
+}
+
+#home .wrapper .container {
+    align-items: flex-start;
 }
 
 #home .wrapper .container h1 {
