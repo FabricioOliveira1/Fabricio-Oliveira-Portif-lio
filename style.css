@@ -272,6 +272,10 @@ nav#navigation.on-scroll .open-menu {
     background-color: initial;
 }
 
+body.menu-expanded nav#navigation.on-scroll .open-menu {
+    background-color:var(--bg-dark);
+}
+
 
 
 
