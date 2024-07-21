@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 window.addEventListener('scroll', screenOnScroll)
 
 const body = document.querySelector('body');
@@ -67,73 +65,38 @@ ScrollReveal({
 #contact`);
 
 
-=======
+const filterLink = document.querySelectorAll('.projects__filter-link')
+const projects = document.querySelector('#projects .course_projects')
 
-window.addEventListener('scroll', screenOnScroll)
+filterLink.forEach((botao) => {
+  let nomeCategoria = botao.getAttribute("name")
+  botao.addEventListener("click", () => filtrarPorCategoria(nomeCategoria))
+})
 
-const body = document.querySelector('body');
+function filtrarPorCategoria(filtro) {
+  const cards = projects.querySelectorAll(".card")
+  for(let card of cards){
 
-function screenOnScroll() {
-	
-	const isScrollZero = scrollY > 0;
+    let tagsList = card.querySelectorAll(".tag")
+    let valorFiltro = filtro.toLocaleLowerCase()
 
-	const navigation = document.querySelector('#navigation')
-	const home = document.querySelector('#home')
+    function verificaItem (tagsList, valorFiltro){
+      for (let i = 0; i < tagsList.length; i++) {
+        if (tagsList[i].innerHTML.toLocaleLowerCase() === valorFiltro) {
+            return true;
+        }
+    }
+    return false;
+    }
+    let filtroExiste = verificaItem(tagsList, valorFiltro)
+    
 
+    if (!filtroExiste && valorFiltro != 'todos') {
+      card.style.display = 'none';
 
-	if(isScrollZero){
-		navigation.classList.add('on-scroll')
-		home.classList.add('on-scroll')
-	} else {
-		navigation.classList.remove('on-scroll')
-		home.classList.remove('on-scroll')
-	}
+    }else {
+      card.style.display = 'flex';
+    } 
+    
+  }
 }
-
-
-
-window.addEventListener('resize', onResize, true);
-
-function onResize (e) {  
-	const screenWidth = e.currentTarget.innerWidth;
-
-	const isScreenWidthLargerThan1024 = screenWidth > 1024;
-	if (isScreenWidthLargerThan1024) {
-		closeMenu()
-	}
-};
-
-
-
-//EXPAND MENU---------------------------------------
-
-
-function expandMenu () {
-	body.classList.toggle('menu-expanded');
-}
-
-const openMenuButton = document.querySelector('.open-menu')
-const closeMenuButton = document.querySelector('.close-menu')
-
-openMenuButton.addEventListener('click', expandMenu)
-closeMenuButton.addEventListener('click', expandMenu)
-
-function closeMenu() {
-	body.classList.remove('menu-expanded');
-}
-
-ScrollReveal({
-    origin: 'top',
-    distance: '30px',
-    duration: 700,
-}).reveal(`
-
-#about .contents,
-#about .contact,
-#skills,
-#projects,
-#projects .cards,
-#contact`);
-
-
->>>>>>> 34dcd7907a7f51c295de3d135f71b9a1d2c557d9
